@@ -1,0 +1,42 @@
+@use "../../styles/variables/colores" as *;
+
+.sidebarContainer{
+    background-color: white;
+    width: fit-content;
+    width: 30%;
+    padding: 30px;
+    
+    border-radius: 6px;
+    box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -25px;
+
+    //Imagen avatar
+    .avatar{
+        width: 7.8rem;
+        margin: 0 auto;
+        & > span{
+            border-radius: 50%;
+        }
+    }
+    ul{
+        margin-top: 15px;
+        li{
+            list-style-type: none;
+            padding: 15px 0;
+            a{
+                text-decoration: none;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                font-family: "Muli semibold";
+                color: $clr_violetaNegro;
+                svg{
+                    margin-right: 15px;
+                }
+            }
+            
+        }
+        li:last-of-type{
+            padding-bottom: 0;
+        }
+    }
+}

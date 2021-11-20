@@ -1,0 +1,41 @@
+@use "../../styles/variables/colores" as *;
+
+.miCuentaContainer{
+    max-width: 62.1em;
+    margin: 20px auto;
+    display: flex;
+    justify-content: flex-start;
+
+    //Mis datos
+    .misDatos{
+        width: 60%;
+        margin-left: 30px;
+        h1{
+            font-family: "Muli";
+            font-size: 1.3rem;
+            color: $clr_violetaNegro;
+        }
+        //container datos
+        .datos{
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 6px;
+            background: white;
+            box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -25px;
+
+            label{
+                color: $clr_grisTexto;
+            }
+            p{
+                padding: 10px 0;
+                margin-bottom: 25px;
+                border-bottom: 1px solid #dae0e5;
+                &:last-of-type{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

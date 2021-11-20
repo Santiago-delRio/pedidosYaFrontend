@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Muli ExtraBold'), url('/fonts/Muli/Muli-ExtraBold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Muli semibold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Muli SemiBold'), url('/fonts/Muli/Muli-SemiBold.woff') format('woff');
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Lato', sans-serif,-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body{
+  background-color: #F9F6F4;
+}

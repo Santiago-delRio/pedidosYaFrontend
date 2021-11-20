@@ -1,0 +1,113 @@
+@use "../../styles/variables/colores" as *;
+
+.registroNegocioContainer{
+    background-image: url("../../assets/imagenes/backgroundRegistroNegocio.jpg");
+    background-attachment: fixed;
+    .containerContent{
+        display: flex;
+    
+        max-width: 62.1em;
+        @media only screen and (max-width: 64em){
+            padding: 0 1rem;
+        }
+        margin: 0 auto;
+    
+        //Texto de la izquierda
+        .textoHero{
+            margin-top: 4rem;
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            position: relative;
+            .logoContainer{
+                width: 9.5rem;
+                padding: 1rem;
+                background: $clr_rojoPrincipal;
+                z-index: 0;
+            }
+            .texto{
+                height: 70%;
+                h1{
+                    font-family: "Muli";
+                    font-size: 2.2rem;
+                    color: white;
+                    padding-bottom: 15px;
+                }
+                h2{
+                    font-family: "Muli semibold";
+                    font-size: 1.2rem;
+                    color: white;
+                }
+            }
+        }
+    
+        //Formulario
+        form{
+            margin: 4rem 0;
+            padding: 50px 40px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            //Se dejaron los inputs vacios
+            .inputVacio{
+                border-color: transparent;
+                outline: red 2px solid;
+            }
+            //Titulo formulario
+            h3{
+                font-family: "Muli";
+                font-size: 1.25rem;
+                text-align: center;
+                color: #4a4a4a;
+                padding-bottom: 20px;
+            }
+            //Label
+            label{
+                color: #9e9e9e;
+                padding-bottom: 10px;
+                font-size: 0.8rem;
+            }
+            //Input
+            input{
+                padding: 10px;
+                margin-bottom: 25px;
+                border-radius: 2px;
+                border: 1px solid #9e9e9e;
+                
+                &:focus{
+                    border-color: #1b95ffa1;
+                    outline: #1b95ff9b 1px solid;
+                    box-shadow: 0 0 3px #2574A9;
+                }
+                &:last-of-type{
+                    margin-bottom: 0;
+                }
+            }
+            //Boton enviar formulario
+            .btnEnviar{
+                background: $clr_rojoPrincipal;
+                outline: none;
+                border: none;
+                border-radius: 2px;
+                padding: 12px;
+                cursor: pointer;
+                margin-top: 10px;
+
+                color: white;
+                font-size: 1rem;
+                font-weight: 700;
+                
+                &:focus{
+                    border-color: transparent;
+                    outline: none;
+                    box-shadow: none;
+                }
+                &:hover{
+                    background: lighten($clr_rojoPrincipal, 8%);
+                }
+            }
+        }
+    }
+}

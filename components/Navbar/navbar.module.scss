@@ -1,0 +1,123 @@
+@use "../../styles/variables/colores" as *;
+
+.navContainer{
+    background-color: white;
+    box-shadow: 0 16px 24px -18px rgb(181 129 108 / 50%);
+    .navbar{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+        max-width: 62.1em;
+        @media only screen and (max-width: 64em){
+            padding: 14px 1rem;
+        }
+        margin: 0 auto;
+        //Logo pedidos ya
+        .logoFlex{
+            width: 65%;
+            .logoContainer{
+                width: 10rem;
+            }
+        }
+        //Boton registrar negocio
+        .btnRegistrarNegocio{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            
+            color: $clr_violetaNegro;
+            font-family: "Muli";
+            font-size: 0.75rem;
+            padding: 6px 16px;
+    
+            background-color: $clr_grisBotones;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            svg{
+                fill: $clr_violetaNegro;
+                margin-right: 5px;
+            }
+            &:active{
+                background: $clr_grisBotones;
+                background: linear-gradient(145deg, rgba(16,4,35,0.2) 0%, rgba(234,227,227,1) 100%);
+            }
+        }
+    
+        //Logo perfil
+        .logoPerfilContainer{
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-left: 60px;
+            //Container logo
+            .logoContainer{
+                width: 2rem;
+                margin-right: 5px;
+                cursor: pointer;
+                -webkit-user-select: none; /* Safari */        
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* IE10+/Edge */
+                user-select: none; /* Standard */
+            }
+            svg{
+                cursor: pointer;
+            }
+            //Menu desplegable
+            .menu{
+                position: absolute;
+                display: flex;
+                align-items: flex-start;
+                flex-direction: column;
+
+                top: 40px;
+                right: -16px;
+                background: white;
+                padding: 20px;
+                border-radius: 6px;
+
+                -webkit-user-select: none; /* Safari */        
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* IE10+/Edge */
+                user-select: none; /* Standard */
+                button{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 16px 10px;
+                    
+                    color: $clr_violetaNegro;
+                    font-family: "Muli semibold";
+                    font-size: 0.87rem;
+            
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    white-space: nowrap;
+                    line-height: .9rem;
+                    svg{
+                        margin-right: 10px;
+                    }
+                }
+                a:last-of-type{
+                    padding-bottom: 0;
+                }
+            }
+         }
+        a{
+            text-decoration: none;
+        }
+
+        .esconderFondo{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #6F6C75;
+            z-index: 1;
+        }
+    }
+}

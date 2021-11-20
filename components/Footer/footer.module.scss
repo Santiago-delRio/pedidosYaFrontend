@@ -1,0 +1,46 @@
+@use "../../styles/variables/colores" as *;
+
+.footerContainer{
+    background: #FA0050;
+    footer{
+        max-width: 62.1em;
+        margin: 0 auto;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        color: white;
+    
+        .links{
+            display: flex;
+            justify-content: space-evenly;
+            li{
+                list-style-type: none;
+                cursor: pointer;
+                padding: 4px;
+                font-size: 0.75rem;
+                font-family: "Muli semibold";
+            }
+        }
+        .arrepentimiento{
+            padding: 40px 0 48px;
+        }
+        .defensa{
+            padding: 0px 0px 12px;
+        }
+        .copyright{
+            margin: 16px 0px 4px;
+        }
+        & > :last-child{
+            
+        }
+        span, p{
+            text-align: center;
+            font-size: 0.68rem;
+        }
+        a{
+            color: white;
+            text-decoration: underline;
+    
+        }
+    }
+}
