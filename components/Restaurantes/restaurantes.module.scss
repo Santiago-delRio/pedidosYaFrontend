@@ -1,0 +1,83 @@
+@use "../../styles/variables/colores" as *;
+
+.restaurantesContainer{
+    max-width: 62.1em;
+    margin: 20px auto;
+    @media only screen and (max-width: 64em){
+        padding: 14px 1rem;
+    }
+    
+    //Restaurantes encontrados
+    & > h3{
+        font-family: "Muli";
+        color: $clr_violetaNegro;
+    }
+    //Restaurante contenedor
+    .restaurante{
+        display: flex;
+        background: white;
+        box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -25px;
+        margin: 12px 0;
+        padding: 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        //Imagen
+        .portadaContainer{
+            width: 6.2rem;
+            height: 6.2rem;
+            border: solid 1px $clr_violetaNegro;
+            border-radius: 5px;
+            & > span{
+                border-radius: 5px;
+            }
+        }
+        .info{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 12px;
+            color: $clr_violetaNegro;
+            h3{
+                font-size: 1rem;
+            }
+            span{
+                color: #586065;
+                font-size: 0.75rem;
+            }
+            //Envio local
+            & > :nth-child(2){
+                margin-top: 8px;
+                font-weight: 700;
+                background: #efedf0;
+                padding: 4px 8px 4px 8px;
+                border-radius: 4px 10px 10px 4px;
+            }
+            //Pago online
+            & > :last-child{
+                display: flex;
+                margin-top: 4px;
+                svg{
+                    margin-right: 6px;
+                    fill: #767f86;
+                }
+            }
+        }
+        .calificacion{
+            display: flex;
+            align-items: center;
+            font-family: "Muli";
+            font-size: 0.75rem;
+            color: #657d02;
+            background: #ebf0ca;
+            height: fit-content;
+            
+            border-radius: 4px;
+            padding: 2px 5px 3px 4px;
+            margin-left: auto;
+            svg{
+                margin-right: 5px;
+                transform: translateY(1px);
+            }
+        }
+    }
+}

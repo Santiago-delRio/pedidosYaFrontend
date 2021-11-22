@@ -19,13 +19,15 @@
             .logoContainer{
                 width: 10rem;
             }
+            & ~ a{
+                margin-left: auto;
+            }
         }
         //Boton registrar negocio
         .btnRegistrarNegocio{
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-left: auto;
             
             color: $clr_violetaNegro;
             font-family: "Muli";
@@ -40,7 +42,7 @@
                 fill: $clr_violetaNegro;
                 margin-right: 5px;
             }
-            &:active{
+            &:active, &:hover{
                 background: $clr_grisBotones;
                 background: linear-gradient(145deg, rgba(16,4,35,0.2) 0%, rgba(234,227,227,1) 100%);
             }
@@ -71,6 +73,7 @@
                 display: flex;
                 align-items: flex-start;
                 flex-direction: column;
+                z-index: 2;
 
                 top: 40px;
                 right: -16px;

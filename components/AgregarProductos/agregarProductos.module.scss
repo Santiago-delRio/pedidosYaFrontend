@@ -1,0 +1,152 @@
+@use "../../styles/variables/colores" as *;
+
+.agregarProductosContainer{
+    background: #F9F6F4;
+    box-shadow: 0 12px 15px 0 rgb(0 0 0 / 25%);
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    max-width: 48em;
+
+    width: 60%;
+    border-radius: 6px;
+
+    //Titulo
+    h2{
+        font-family: "Muli semibold";
+        font-size: 1.4rem;
+        color: #100423;
+
+        width: 100%;
+        padding: 20px 10px;
+        background-color: white;
+        box-shadow: rgb(181 129 108 / 30%) 0px 16px 24px -18px;
+        border-radius: 6px 6px 0 0;
+
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg{
+            fill: #100423;
+            position: absolute;
+            left: 12px;
+            cursor: pointer;
+        }
+    }
+
+    //Formulario
+    form{
+        display: flex;
+        flex-direction: column;
+        background: white;
+        box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -25px;
+        padding: 30px 20px;
+        margin: 16px;
+        border-radius: 6px;
+        //Titulo formulario
+        h3{
+            color: #100423;
+            text-align: left;
+            font-family: "Muli semibold";
+            padding: 0 0 30px 0;
+        }
+        //Label
+        label{
+            font-family: "Muli semibold";
+            color: #a9b1b7;
+            padding-bottom: 10px;
+            font-size: 0.9rem;
+            transform: translateY(35px);
+            transition: .3s;
+            pointer-events: none;
+            &:last-of-type{
+                transform: translateY(0);
+            }
+        }
+        //Input
+        input:not(:last-of-type){
+            border: none;
+            border-bottom: 1px solid #9e9e9ec9;
+            margin-bottom: 30px;
+            transition: .2s;
+            padding: 10px;
+
+            &:last-of-type{
+                margin-bottom: 0;
+            }
+            &:focus{
+                outline: none;
+                border-bottom: 1px solid #2b1a46;
+            }
+        }
+        //Se esta usando un input
+        .inputActivo{
+            transform: translateY(0);
+            color: $clr_grisTexto;
+        }
+        //Input se dejo vacio
+        .inputVacio{
+            border-bottom: 2px solid red!important;
+        }
+        
+        //Input imagen real
+        input[type="file"]{
+            display: none;
+        }
+        //Input imagen de mentira
+        .inputImagen{
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            //Boton elegir imagen
+            button{
+                font-family: "Muli";
+                color: $clr_violetaNegro;
+                background-color: $clr_grisBotones;
+
+                border: none;
+                border-radius: 50px;
+                padding: 10px 15px;
+                cursor: pointer;
+                &:active, &:hover{
+                    background: $clr_grisBotones;
+                    background: linear-gradient(145deg, rgba(16,4,35,0.2) 0%, rgba(234,227,227,1) 100%);
+                }
+            }
+            //Nombre imagen elegida
+            p{
+                margin-left: 10px;
+                color: $clr_grisTexto;
+            }
+        }
+    }
+    //Boton guardar producto
+    .btnGuardarContainer{
+        background-color: white;
+        box-shadow: rgb(181 129 108 / 30%) 0 -16px 24px -18px;
+        border-radius: 0 0 6px 6px;
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+        button{
+            background-color: $clr_rojoPrincipal;
+            width: 100%;
+            font-family: "Muli";
+            font-size: .9rem;
+            color: white;
+            border-radius: 50px;
+            border: none;
+            padding: 16px 40px;
+            margin: 0 10px;
+            cursor: pointer;
+            &:hover{
+                background: lighten($clr_rojoPrincipal, 8%);
+            }
+        }
+    }
+}

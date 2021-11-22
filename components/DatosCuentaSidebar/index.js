@@ -1,12 +1,25 @@
 import Image from 'next/image'
 import Link from "next/link"
+import { useEffect, useState } from 'react'
 import sidebarStyles from "./datosCuentaSidebar.module.scss"
 
 const DatosCuentaSidebar = () => {
+
+    //Poner imagen de perfil default
+    const [ logoCuenta, setLogoCuenta] = useState("http://localhost:1337/imagenPerfilDefault.png")
+
+    useEffect(()=>{
+
+        //Si hay un logo cargado usarlo
+        if(window.localStorage.logo != "null" && window.localStorage.logo != undefined){
+            setLogoCuenta(window.localStorage.logo)
+        }
+
+    },[])
     return (
         <div className={sidebarStyles.sidebarContainer}>
             <div className={sidebarStyles.avatar}>
-                <Image src={"http://localhost:1337/imagenPerfilDefault.png"} alt="Imagen de perfil" layout={'responsive'} width="500px" height="500px" quality="90" priority="true"/>
+                <Image src={logoCuenta} alt="Imagen de perfil" layout={'responsive'} width="500px" height="500px" quality="90" priority="true"/>
             </div>
             <ul>
                 <li>

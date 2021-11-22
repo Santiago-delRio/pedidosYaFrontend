@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import axios from 'axios';
@@ -90,6 +91,9 @@ const RegistroNegocio = () => {
 
     return (
         <div className={registroStyles.registroNegocioContainer}>
+            <Head>
+                <title>Registrá tu negocio | PedidosYa</title>
+            </Head>
             <div className={registroStyles.containerContent}>
                 {/* Columna de texto */}
                 <div className={registroStyles.textoHero}>

@@ -1,0 +1,228 @@
+@use "../../styles/variables/colores" as *;
+
+.restauranteContainer{
+    //Banner
+    .banner{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        //imagen fondo
+        .imagen{
+            position: relative;
+            height: 230px;
+            & > span img{
+                opacity: 0.5;
+            }
+            .filtro{
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(39,50,57,0),#273239 70%)
+            }
+        }
+        //Info
+        .info{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 62.1em;
+            @media only screen and (max-width: 64em){
+                padding: 14px 1rem;
+            }
+            //Envio
+            .envio{
+                display: flex;
+                font-size: 0.75rem;
+                width: fit-content;
+                background: #efedf0;
+                padding: 4px 8px 4px 8px;
+                border-radius: 4px 10px 10px 4px;
+                svg{
+                    margin-right: 5px;
+                }
+            }
+            //Nombre negocio
+            .nombre{
+                font-family: "Muli";
+                font-size: 1.5rem;
+                color: white;
+                line-height: 1.17;
+                margin: 15px 0;
+            }
+            //Barra buscar
+            .buscar{
+                display: flex;
+                align-items: center;
+                background-color: white;
+                width: 55%;
+                padding: 10px;
+                margin-bottom: 30px;
+                border-radius: 50px;
+                font-size: 0.9rem;
+                color:#585065;
+                svg{
+                    margin-right: 7px;
+                }
+            }
+        }
+    }
+    //Calificacion y opiniones
+    .calificacionOpiniones{
+        background-color: white;
+        box-shadow: 0 16px 24px -18px rgb(181 129 108 / 50%);
+        padding: 20px;
+        & > div{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 62.1em;
+            @media only screen and (max-width: 64em){
+                padding: 14px 1rem;
+            }
+            margin: 0 auto;
+            .calificacion{
+                display: flex;
+                align-items: center;
+                font-family: "Muli";
+                font-size: 1rem;
+                color: #657d02;
+                
+                height: fit-content;
+                width: fit-content;
+                
+                border-radius: 4px;
+                margin-right: 15px;
+                svg{
+                    margin-right: 5px;
+                    transform: translateY(1px);
+                }
+            }
+            .opiniones{
+                display: flex;
+                align-items: center;
+
+                color: $clr_violetaNegro;
+                font-family: "Muli";
+                font-size: 0.75rem;
+                padding: 6px 16px;
+        
+                background-color: $clr_grisBotones;
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                svg{
+                    margin-left: 5px;
+                    transform: translateY(1px);
+                }
+                &:hover{
+                    background: $clr_grisBotones;
+                    background: linear-gradient(145deg, rgba(16,4,35,0.2) 0%, rgba(234,227,227,1) 100%);
+                }
+            }
+        }
+    }
+    //Container productos
+    .productosContainer{
+        width: 100%;
+        max-width: 62.1em;
+        @media only screen and (max-width: 64em){
+            padding: 14px 1rem;
+        }
+        margin: 20px auto;
+        //Titulo nuestros productos
+        h2{
+            font-family: "Muli";
+            font-size: 1.3rem;
+            color: $clr_violetaNegro;
+            margin-bottom: 15px;
+        }
+        //Grid productos
+        .productos{
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-auto-rows: 1fr;
+            grid-gap: 30px;
+            // El producto
+            .producto{
+                display: grid;
+                grid-template-columns: 70% 30%;
+                grid-auto-rows: 1fr;
+                
+                padding: 15px;
+                background-color: white;
+                box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -25px;
+                border-radius: 6px;
+                text-decoration: none;
+                cursor: pointer;
+
+                -webkit-user-select: none; /* Safari */        
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* IE10+/Edge */
+                user-select: none; /* Standard */
+                
+                //Imagen producto
+                .imagen{
+                    margin-left: auto;
+                    width: 100%;
+                    & span {
+                        border-radius: 6px;
+                    }
+                }
+                //Info producto
+                .info{
+                    display: flex;
+                    flex-direction: column;
+                    margin-right: 15px;
+                    //Nombre
+                    h3{
+                        font-family: "Muli semibold";
+                        font-size: 1rem;
+                        color: $clr_violetaNegro;
+                        margin-bottom: 10px;
+
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2; /* number of lines to show */
+                                line-clamp: 2; 
+                        -webkit-box-orient: vertical;
+                    }
+                    //Descripcion
+                    p{
+                        font-size: 0.75rem;
+                        color: $clr_grisTexto;
+                        margin-bottom: 15px;
+
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2; /* number of lines to show */
+                                line-clamp: 2; 
+                        -webkit-box-orient: vertical;
+                    }
+                    //precio
+                    span{
+                        font-weight: 600;
+                        color: $clr_grisTexto;
+                        margin-top: auto;
+                    }
+                    //Precio con descuento
+                    .descuento{
+                        color: #002cc1;
+                        //Precio viejo
+                        s{
+                            font-size: 0.75rem;
+                            color: $clr_grisTexto;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

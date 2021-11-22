@@ -82,11 +82,22 @@ const MenuLogin = ({cerrarMenu}) => {
                 alert("El usuario y la contraseña no coinciden, intentelo de nuevo")
                 return
             }else{
-                alert("Inicio exitoso")
+
+                const respuestaLogo = await axios.get(`http://localhost:1337/restaurante/${respuestaLogin.data[0].datosRestaurante}`, datosLogin, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
                 //Cargar id del restaurante en el localStorge
                 window.localStorage.setItem("idRestaurante", respuestaLogin.data[0].datosRestaurante)
+                //Cargar logo del restaurante al localStorage
+                window.localStorage.setItem("logo", respuestaLogo.data[0][0].logo)
 
-                 //Refrescar la pagina
+                alert("Inicio exitoso")
+                //Refrescar la pagina
                 router.push("/")
                 router.reload(window.location.pathname)
                 cerrarMenu(false)

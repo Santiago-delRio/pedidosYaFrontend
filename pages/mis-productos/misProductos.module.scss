@@ -1,0 +1,140 @@
+@use "../../styles/variables/colores" as *;
+
+.misProductosContainer{
+    max-width: 62.1em;
+    margin: 20px auto;
+    @media only screen and (max-width: 64em){
+        padding: 14px 1rem;
+    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    //Esconder el fondo cuando se está agregando / editando un producto
+    .esconderFondo{
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: #6F6C75;
+        z-index: 1;
+    }
+    .misProductos{
+        width: 70%;
+        margin-left: 30px;
+        //Titulo
+        h1{
+            font-family: "Muli";
+            font-size: 1.3rem;
+            color: $clr_violetaNegro;
+        }
+        //Boton agregar productos
+        .btnAgregarProductos{
+            font-family: "Muli";
+            font-size: 1rem;
+            color: $clr_violetaNegro;
+            background-color: $clr_grisBotones;
+
+            border: none;
+            border-radius: 50px;
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            &:active, &:hover{
+                background: $clr_grisBotones;
+                background: linear-gradient(145deg, rgba(16,4,35,0.2) 0%, rgba(234,227,227,1) 100%);
+            }
+        }
+        //Tabla productos
+        .productos{
+            width: 100%;
+            background-color: white;
+            box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -25px;
+            border-radius: 6px;
+            padding: 30px;
+            margin-top: 15px;
+            
+            //Head tabla
+            .headListaMuebles{
+                //Texto head
+                tr th{
+                    text-align: left;
+                    padding-bottom: 10px;
+                    span{
+                        font-family: "Muli";
+                    }
+                }
+            }
+            //Body tabla
+            .productosBody{
+                tr{
+                    //Imagen producto
+                    .imagenContainer{
+                        .imagen{
+                            width: 4.5rem;
+                            height: 4.5rem;
+                            & > span{
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                    .nombreProducto{
+                        width: 40%;
+                    }
+                    td{
+                        padding: 20px 0;
+                        padding-right: 20px;
+                        //Boton borrar producto
+                        &:last-of-type{
+                            svg{
+                                fill: $clr_rojoPrincipal;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    &:last-of-type td{
+                        padding-bottom: 0;
+                    }
+                }
+                //Bordes de las celdas
+                tr:not(tr:first-child){
+                    position: relative;
+                    &::after{
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        width: 100%;
+                        height: 1px;
+                        background-color: #EAE3E3;
+                    }
+                }
+                //Boton editar producto
+                .btnEditar{
+                    width: 5%;
+                    button{
+                        display: flex;
+                        align-items: center;
+                        color: $clr_violetaNegro;
+                        font-family: "Muli";
+
+                        background-color: $clr_grisBotones;
+                        border: none;
+                        border-radius: 50px;
+                        padding: 5px 10px;
+                        cursor: pointer;
+                        &:active, &:hover{
+                            background: $clr_grisBotones;
+                            background: linear-gradient(145deg, rgba(16,4,35,0.2) 0%, rgba(234,227,227,1) 100%);
+                        }
+                        svg{
+                            margin-right: 5px;
+                            fill: $clr_violetaNegro;
+                            pointer-events: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
