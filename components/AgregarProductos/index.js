@@ -74,7 +74,7 @@ const AgregarProductos = ({menuAbierto, editando, producto}) => {
 
             formData.append("producto" , inputImagen.current.files[0])
 
-            const respuesta = await axios.put('http://localhost:1337/restaurante/producto/imagen', formData, {
+            const respuesta = await axios.put('http://137.184.217.46:1337/restaurante/producto/imagen', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
@@ -84,7 +84,7 @@ const AgregarProductos = ({menuAbierto, editando, producto}) => {
 
             //Arreglar ruta de la imagen y subir al localstorage
             const rutaRegex = /public/g
-            const rutaImagen = respuesta.data.replace(rutaRegex, "http://localhost:1337")
+            const rutaImagen = respuesta.data.replace(rutaRegex, "http://137.184.217.46:1337")
 
             if(editando){
                 actualizarProducto(rutaImagen)
@@ -105,7 +105,7 @@ const AgregarProductos = ({menuAbierto, editando, producto}) => {
                 restaurante: window.localStorage.idRestaurante
             }
 
-            axios.post('http://localhost:1337/restaurante/productos', datosProducto, {
+            axios.post('http://137.184.217.46:1337/restaurante/productos', datosProducto, {
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -129,7 +129,7 @@ const AgregarProductos = ({menuAbierto, editando, producto}) => {
                 id: producto.id
             }
 
-            axios.put('http://localhost:1337/restaurante/productos', datosProducto, {
+            axios.put('http://137.184.217.46:1337/restaurante/productos', datosProducto, {
             headers: {
                 'Content-Type': 'application/json',
             }

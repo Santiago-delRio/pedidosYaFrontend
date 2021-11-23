@@ -24,7 +24,7 @@ const MiCuenta = () => {
 
         //Datos del restaurante
         const buscarDatos = async (id) =>{
-            const respuesta = await axios.get(`http://localhost:1337/restaurante/${id}`, {
+            const respuesta = await axios.get(`http://137.184.217.46:1337/restaurante/${id}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -62,7 +62,7 @@ const MiCuenta = () => {
         
         if(horarios.length > 0){
             
-            axios.post('http://localhost:1337/restaurante/cargar-horarios', horarios, {
+            axios.post('http://137.184.217.46:1337/restaurante/cargar-horarios', horarios, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -89,7 +89,7 @@ const MiCuenta = () => {
                 imagen: rutaImagen
             }
 
-            axios.put('http://localhost:1337/restaurante-logo', datosImagen, {
+            axios.put('http://137.184.217.46:1337/restaurante-logo', datosImagen, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -104,7 +104,7 @@ const MiCuenta = () => {
 
         //Subir imagen al servidor
         const subirImagen = async () =>{
-            const respuesta = await axios.put('http://localhost:1337/subir-logo', formData, {
+            const respuesta = await axios.put('http://137.184.217.46:1337/subir-logo', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
@@ -114,7 +114,7 @@ const MiCuenta = () => {
 
             //Arreglar ruta de la imagen y subir al localstorage
             const rutaRegex = /public/g
-            const rutaImagen = respuesta.data.replace(rutaRegex, "http://localhost:1337")
+            const rutaImagen = respuesta.data.replace(rutaRegex, "http://137.184.217.46:1337")
             window.localStorage.setItem("logo", rutaImagen)
 
             actualizarLogo(rutaImagen)

@@ -61,7 +61,7 @@ const RegistroNegocio = () => {
         }
 
         const subirRestaurante = async () =>{
-            const respuesta = await axios.post('http://localhost:1337/restaurantes', datosRestaurante, {
+            const respuesta = await axios.post('http://137.184.217.46:1337/restaurantes', datosRestaurante, {
                 headers: {
                     'Content-Type': 'application/json',
                 }

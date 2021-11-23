@@ -6,7 +6,7 @@ import sidebarStyles from "./datosCuentaSidebar.module.scss"
 const DatosCuentaSidebar = () => {
 
     //Poner imagen de perfil default
-    const [ logoCuenta, setLogoCuenta] = useState("http://localhost:1337/imagenPerfilDefault.png")
+    const [ logoCuenta, setLogoCuenta] = useState("http://137.184.217.46:1337/imagenPerfilDefault.png")
 
     //Logeado?
     const [logeadoCliente, setLogeadoCliente] = useState()

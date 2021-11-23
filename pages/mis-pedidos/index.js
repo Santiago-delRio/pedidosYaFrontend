@@ -11,14 +11,8 @@ const MisPedidos = ({ pedidos, clientes, restaurantes }) => {
     
     const [logeadoCliente, setLogeadoCliente] = useState()
     const [logeadoRestaurante, setLogeadoRestaurante] = useState()
-    const [hayWindow, setHayWindow] = useState(false)
 
     useEffect(()=>{
-        // console.log(pedidos.filter(pedido => pedido.restaurante == window.localStorage.idRestaurante))
-        console.log(restaurantes)
-        
-        // console.log(clientes)
-        // console.log(productos)
 
         if(!window.localStorage.idRestaurante && !window.localStorage.idCliente){
             router.push("/")

@@ -31,7 +31,7 @@ const MisProductos = () => {
 
         //Productos del restaurante
         const buscarProductos = async (id) =>{
-            const respuesta = await axios.get(`http://localhost:1337/restaurante/${id}/productos`, {
+            const respuesta = await axios.get(`http://137.184.217.46:1337/restaurante/${id}/productos`, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -50,7 +50,7 @@ const MisProductos = () => {
 
     //Borrar producto
     const borrarProducto = (id) =>{
-        axios.delete('http://localhost:1337/restaurante/producto', {
+        axios.delete('http://137.184.217.46:1337/restaurante/producto', {
             data: {
                 id: id
             }

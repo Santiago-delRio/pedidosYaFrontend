@@ -65,7 +65,7 @@ const Restaurante = ({ restaurante, productos }) => {
             productos: carrito
         }
 
-        axios.post('http://localhost:1337/pedidos', datosPedido, {
+        axios.post('http://137.184.217.46:1337/pedidos', datosPedido, {
             headers: {
                 'Content-Type': 'application/json',
             }

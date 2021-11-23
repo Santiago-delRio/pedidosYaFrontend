@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Image from 'next/image'
 import comprarProductoStyles from "./comprarProducto.module.scss"
 

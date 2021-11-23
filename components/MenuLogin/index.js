@@ -69,7 +69,7 @@ const MenuLogin = ({cerrarMenu}) => {
 
         //Buscar credenciales del negocio en la base de datos
         const validarDatosNegocio = async () =>{
-            const respuestaLogin = await axios.post('http://localhost:1337/restaurantes/login', datosLogin, {
+            const respuestaLogin = await axios.post('http://137.184.217.46:1337/restaurantes/login', datosLogin, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -83,7 +83,7 @@ const MenuLogin = ({cerrarMenu}) => {
                 return
             }else{
 
-                const respuestaLogo = await axios.get(`http://localhost:1337/restaurante/${respuestaLogin.data[0].datosRestaurante}`, datosLogin, {
+                const respuestaLogo = await axios.get(`http://137.184.217.46:1337/restaurante/${respuestaLogin.data[0].datosRestaurante}`, datosLogin, {
                     headers: {
                         'Content-Type': 'application/json',
                     }
@@ -105,7 +105,7 @@ const MenuLogin = ({cerrarMenu}) => {
         }
         //Buscar credenciales del cliente en la base de datos
         const validarDatosCliente = async () =>{
-            const respuestaLogin = await axios.post('http://localhost:1337/clientes/login', datosLogin, {
+            const respuestaLogin = await axios.post('http://137.184.217.46:1337/clientes/login', datosLogin, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
@@ -128,7 +128,7 @@ const MenuLogin = ({cerrarMenu}) => {
         
         //Registrar nuevo usuario
         const registrarUsuario = async () =>{
-            const respuestaLogin = await axios.post('http://localhost:1337/clientes', datosLogin, {
+            const respuestaLogin = await axios.post('http://137.184.217.46:1337/clientes', datosLogin, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
