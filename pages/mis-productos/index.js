@@ -73,13 +73,24 @@ const MisProductos = () => {
             {/* Mis productos */}
             <div className={misProductosStyles.misProductos}>
                 <h1>Mis productos</h1>
-                <button className={misProductosStyles.btnAgregarProductos} onClick={()=>{setAgregarProductos(true)}}>Agregar productos</button>
+                <button className={misProductosStyles.btnAgregarProductos} onClick={()=>{
+                    setDatosProductoEditar({
+                        nombre: "",
+                        descripcion: "",
+                        precio: "",
+                        descuento: "",
+                        imagen: "",
+                        id: ""
+                    })
+                    setAgregarProductos(true)
+                }}>Agregar productos</button>
                 {(agregarProductos) ? 
                     <AgregarProductos menuAbierto={setAgregarProductos} editando={false} producto={datosProductoEditar}/>
                 : ""}
                 {/* Productos */}
                 {(productos) ? 
                     <table className={misProductosStyles.productos}>
+                        {/* Head tabla */}
                         <thead className={misProductosStyles.headListaMuebles}>
                             <tr>
                                 <th>
@@ -96,17 +107,23 @@ const MisProductos = () => {
                                 </th>
                             </tr>
                         </thead>
+                        {/* Body tabla */}
                         <tbody className={misProductosStyles.productosBody}>
                             {productos.map((producto)=>(
                                 <tr key={producto.id_producto}>
+                                    {/* id */}
                                     <td>{producto.id_producto}</td>
+                                    {/* Imagen del producto */}
                                     <td className={misProductosStyles.imagenContainer}>
                                         <div className={misProductosStyles.imagen}>
-                                            <Image src={producto.imagen} alt="Imagen de un producto del restaurante" layout={'responsive'} width="500" height="500" quality="90" priority="true"/>
+                                            <Image src={producto.imagen} alt="Imagen de un producto del restaurante" layout={'responsive'} width="500" height="500" quality="90"/>
                                         </div>
                                     </td>
+                                    {/* Nombre */}
                                     <td className={misProductosStyles.nombreProducto}>{producto.nombre}</td>
+                                    {/* Precio */}
                                     <td>${producto.precio}</td>
+                                    {/* Boton editar */}
                                     <td className={misProductosStyles.btnEditar}>
                                         <button data-nombre={producto.nombre} data-descripcion={producto.descripcion} data-precio={producto.precio} data-descuento={producto.descuento} data-imagen={producto.imagen} data-id={producto.id_producto} onClick={()=>{
                                             setDatosProductoEditar({

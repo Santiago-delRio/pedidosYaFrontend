@@ -1,0 +1,147 @@
+@use "../../styles/variables/colores" as *;
+
+.carritoContainer{
+    background: #F9F6F4;
+    box-shadow: 0 12px 15px 0 rgb(0 0 0 / 25%);
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    max-width: 48em;
+
+    width: 60%;
+    border-radius: 6px;
+
+    //Header carrito
+    header{
+        //Titulo mi pedido
+        & > h2{
+            font-family: "Muli semibold";
+            font-size: 1.4rem;
+            color: #100423;
+    
+            width: 100%;
+            padding: 20px 10px;
+            background-color: white;
+            border-radius: 6px 6px 0 0;
+    
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            svg{
+                fill: #100423;
+                position: absolute;
+                left: 12px;
+                cursor: pointer;
+            }
+        }
+        //Logo y nombre del restaurante
+        .datosRestaurante{
+            display: flex;
+            background-color: white;
+            box-shadow: rgb(181 129 108 / 30%) 0px 16px 24px -18px;
+            padding: 10px 16px 20px 16px;
+            //Logo
+            .portadaContainer{
+                width: 4rem;
+                height: 4rem;
+                border: solid 1px $clr_violetaNegro;
+                border-radius: 5px;
+                & > span{
+                    border-radius: 5px;
+                }
+            }
+            //Nombre
+            & > h2{
+                font-family: "Muli semibold";
+                font-size: 1.1rem;
+                margin-left: 15px;
+            }
+        }
+    }
+    //Titulo estas llevando
+    .tituloProductos{
+        font-family: "Muli";
+        font-size: 1.05rem;
+        margin: 20px 16px;
+    }
+    //Datos del pedido
+    .infoPedido{
+        padding: 16px;
+        overflow-y: scroll;
+        max-height: 40vh;
+        //Container producto
+        .producto{
+            display: flex;
+            background: white;
+            box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            padding: 15px;
+            color: $clr_violetaNegro;
+            .cantidad{
+                margin-right: 15px;
+            }
+            .precio{
+                margin-left: auto;
+                font-size: 1rem;
+                font-weight: 600;
+                color: $clr_grisTexto;
+            }
+        }
+    }
+    // Subtotal
+    .subtotal{
+        display: flex;
+        padding: 30px 16px;
+        border-top: 1px solid rgb(234, 227, 227);
+        & > :last-child{
+            margin-left: auto;
+            font-weight: 600;
+        }
+    }
+    //Boton seguir comprando
+    .btnSeguirComprando{
+        background-color: $clr_grisBotones;
+        font-family: "Muli";
+        font-size: .9rem;
+        color: $clr_violetaNegro;
+        border-radius: 50px;
+        border: none;
+        padding: 16px 0;
+        margin: 0 16px;
+        margin-bottom: 40px;
+        cursor: pointer;
+        &:hover{
+            background: linear-gradient(145deg, rgba(16,4,35,0.2) 0%, rgba(234,227,227,1) 100%);
+        }
+    }
+    //boton completar compra
+    .btnComprar{
+        background-color: white;
+        box-shadow: rgb(181 129 108 / 30%) 0 -16px 24px -18px;
+        border-radius: 0 0 6px 6px;
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+        button{
+            background-color: $clr_rojoPrincipal;
+            width: 100%;
+            font-family: "Muli";
+            font-size: .9rem;
+            color: white;
+            border-radius: 50px;
+            border: none;
+            padding: 16px 40px;
+            margin: 0 16px;
+            cursor: pointer;
+            &:hover{
+                background: lighten($clr_rojoPrincipal, 8%);
+            }
+        }
+    }
+}

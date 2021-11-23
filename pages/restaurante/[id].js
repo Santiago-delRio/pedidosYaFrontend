@@ -1,26 +1,93 @@
 import axios from 'axios';
 import Image from 'next/image'
 import Head from 'next/head'
-import { useState } from "react";
+import { useRouter } from 'next/router'
+import { useEffect, useState } from "react";
 import restauranteStyles from "./restaurante.module.scss"
 import banner from "../../assets/imagenes/bannerRestaurante.webp"
 import ComprarProducto from "../../components/ComprarProducto"
+import Carrito from "../../components/Carrito"
 
 const Restaurante = ({ restaurante, productos }) => {
 
+    const router = useRouter()
+
     //Producto elegido para agregar al carrito
     const [productoElegido, setProductoElegido] = useState({})
+    //Modal elegir producto
     const [modalElegirProducto, setModalElegirProducto] = useState(false)
+    // Carrito
+    const [carrito, setCarrito] = useState([])
+    const [carritoModal, setCarritoModal] = useState(false)
+    const [subtotal, setSubtotal] = useState(0)
+
+    //Mostrar boton ver pedido
+    const [verPedido, setVerPedido] = useState(true)    
+
+    //Actualizar el total del pedido
+    useEffect(()=>{
+        let total = 0
+        carrito.map((producto)=>{
+            total += (producto.precio * producto.cantidad)
+        })
+        setSubtotal(total)
+
+    },[carrito])
+
+    //Enviar el pedido
+    const guardarPedido = () =>{
+
+        //Ver que esté loggeado como cliente
+
+        if(!window.localStorage.idCliente && !window.localStorage.idRestaurante){
+            alert("Tiene que iniciar sesión para hacer un pedido")
+            return
+        }
+        if(window.localStorage.idRestaurante){
+            alert("No puede hacer un pedido siendo un negocio. Inicie sesión como cliente")
+            return
+        }
+
+        let fecha;
+        fecha = new Date();
+        fecha = fecha.getUTCFullYear() + '-' +
+            ('00' + (fecha.getMonth()+1)).slice(-2) + '-' +
+            ('00' + fecha.getDate()).slice(-2) + ' ' + 
+            ('00' + fecha.getHours()).slice(-2) + ':' + 
+            ('00' + fecha.getMinutes()).slice(-2) + ':' + 
+            ('00' + fecha.getSeconds()).slice(-2);
+
+        const datosPedido = {
+            importe: subtotal,
+            fecha: fecha,
+            cliente: window.localStorage.idCliente,
+            restaurante: restaurante[0].id_restaurante,
+            productos: carrito
+        }
+
+        axios.post('http://localhost:1337/pedidos', datosPedido, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+        alert("Pedido enviado")
+        router.reload(window.location.pathname)
+    }
 
     return (
         <div className={restauranteStyles.restauranteContainer}>
             <Head>
                 <title>{restaurante[0].nombre} | PedidosYa</title>
             </Head>
+            {/* Div para esconder el fondo */}
+            <div className={(modalElegirProducto || carritoModal) ? restauranteStyles.esconderFondo : ""}></div>
             {/* Banner */}
             <div className={restauranteStyles.banner}>
                 <div className={restauranteStyles.imagen}>
-                    <Image src={banner} alt="banner del restaurante" layout={'fill'} objectFit={'cover'} quality="80"/>
+                    <Image src={banner} alt="banner del restaurante" layout={'fill'} objectFit={'cover'} quality="80" priority="true"/>
                     <div className={restauranteStyles.filtro}></div>
                 </div>
                 {/* info */}
@@ -52,7 +119,7 @@ const Restaurante = ({ restaurante, productos }) => {
                     </span>
                 </div>
             </div>
-            {/* Seccion de producto */}
+            {/* Contenedor de productos */}
             <div className={restauranteStyles.productosContainer}>
                 {/* Titulo */}
                 <h2>Nuestros productos</h2>
@@ -61,6 +128,7 @@ const Restaurante = ({ restaurante, productos }) => {
                     {/* El producto */}
                     {productos.map((producto)=>(
                         <div key={producto.id_producto} className={restauranteStyles.producto} onClick={()=>{
+                            //Abrir modal para agregar producto al pedido
                             setProductoElegido({
                                 id: producto.id_producto,
                                 nombre: producto.nombre,
@@ -82,15 +150,31 @@ const Restaurante = ({ restaurante, productos }) => {
                             </div>
                             {/* Imagen */}
                             <div className={restauranteStyles.imagen}>
-                                <Image src={producto.imagen} alt="Imagen de un producto del restaurante" layout={'responsive'} width="500" height="500" quality="90" priority="true"/>
+                                <Image src={producto.imagen} alt="Imagen de un producto del restaurante" layout={'responsive'} width="500" height="500" quality="90"/>
                             </div>
                         </div>
                     ))}
                 </div>
+                {/* Modal para agregar producto al pedido */}
                 {(modalElegirProducto) ? 
-                    <ComprarProducto producto={productoElegido}/>
+                    <ComprarProducto producto={productoElegido} cerrarMenu={setModalElegirProducto} setCarrito={setCarrito} carrito={carrito} setSubtotal={setSubtotal}/>
+                : ""}
+                {/* Modal del carrito de compra */}
+                {(carritoModal) ? 
+                    <Carrito carrito={carrito} cerrarMenu={setCarritoModal} restauranteNombre={restaurante[0].nombre} restauranteLogo={restaurante[0].logo} subtotal={subtotal} guardarPedido={guardarPedido} setVerPedido={setVerPedido}/>
                 : ""}
             </div>
+            {/* Boton de ver pedido */}
+            {(carrito.length > 0 && verPedido) ? 
+                <div className={restauranteStyles.verPedido}>
+                    <button onClick={()=>{
+                        setCarritoModal(true)
+                        setVerPedido(false)
+                    }}>
+                        Ver mi pedido&nbsp; ${subtotal}
+                    </button>
+                </div>
+            : ""}
         </div>
     );
 }

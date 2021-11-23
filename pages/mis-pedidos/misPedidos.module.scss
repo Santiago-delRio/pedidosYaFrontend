@@ -1,0 +1,95 @@
+@use "../../styles/variables/colores" as *;
+
+.misPedidosContainer{
+    max-width: 62.1em;
+    margin: 20px auto;
+    @media only screen and (max-width: 64em){
+        padding: 14px 1rem;
+    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    //Todos los pedidos
+    .misPedidos{
+        width: 70%;
+        margin-left: 30px;
+        //Titulo
+        h1{
+            font-family: "Muli";
+            font-size: 1.3rem;
+            color: $clr_violetaNegro;
+        }
+        //Tabla pedidos
+        .tablaPedidos{
+            width: 100%;
+            background-color: white;
+            box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -25px;
+            border-radius: 6px;
+            padding: 30px;
+            margin-top: 15px;
+
+            //Head tabla
+            thead{
+                //Texto head
+                tr th{
+                    text-align: left;
+                    padding-bottom: 10px;
+                    span{
+                        font-family: "Muli";
+                    }
+                }
+            }
+            //Body tabla
+            tbody{
+                tr{
+                    td{
+                        padding: 20px 0;
+                        width: 20%;
+                        &:first-child{
+                            width: 10%;
+                        }
+                        &:last-child{
+                            width: 50%;
+                        }
+                        //Boton ver mas
+                        &:last-child{
+                            button{
+                                display: flex;
+                                align-items: center;
+                                color: $clr_violetaNegro;
+                                font-family: "Muli";
+
+                                background-color: $clr_grisBotones;
+                                border: none;
+                                border-radius: 50px;
+                                padding: 5px 10px;
+                                cursor: pointer;
+                                &:hover{
+                                    background: $clr_grisBotones;
+                                    background: linear-gradient(145deg, rgba(16,4,35,0.2) 0%, rgba(234,227,227,1) 100%);
+                                }
+                            }
+                        }
+                    }
+                    &:last-of-type td{
+                        padding-bottom: 0;
+                    }
+                }
+                //Bordes de las celdas
+                tr:not(tr:first-child){
+                    position: relative;
+                    &::after{
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        left: 0;
+                        width: 100%;
+                        height: 1px;
+                        background-color: #EAE3E3;
+                    }
+                }
+            }
+        }
+    }
+}

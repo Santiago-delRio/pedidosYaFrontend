@@ -7,7 +7,7 @@ const Footer = () => {
 
     return (
         <div className={footerStyles.footerContainer}>
-            {(router.asPath == "/mi-cuenta" || router.asPath == "/mis-pedidos" || router.asPath == "/mis-productos") ? "" 
+            {(router.asPath == "/mi-cuenta" || router.asPath == "/mis-pedidos" || router.asPath == "/mis-productos" || router.asPath.includes("/restaurante/")) ? "" 
             :
             <footer>
                 <div className={footerStyles.links}>
